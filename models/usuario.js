@@ -35,7 +35,9 @@ const UsuarioShema = Schema({
 
 // metodo para sacar el password y __v de la respuesta.
 UsuarioShema.methods.toJSON = function() {
-  const { __v, password, ...usuario } = this.toObject();
+  const { __v, password, _id, ...usuario } = this.toObject();
+  // cambio el _id a uid
+  usuario.uid = _id;
   return usuario;
 }
 
